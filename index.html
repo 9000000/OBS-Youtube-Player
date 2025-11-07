@@ -136,6 +136,7 @@
               document.querySelector("#info").innerHTML = "";
               debug("Playing... ");
               hideWhenStopped && (document.querySelector("#container").style.display = "block");
+              player.unMute();
               onAir();
               break;
             case 2: // Pause
