@@ -32,11 +32,11 @@
 
       let songID = url.searchParams.get("watch?v");
       let listID = url.searchParams.get("list");
-      let title = url.searchParams.get("title") == "true" ? true : false;
+      let title = url.searchParams.get("title") == "false" ? true : false;
       let volume = url.searchParams.get("volume") || 45;
       let width = url.searchParams.get("w") || 1920;
       let height = url.searchParams.get("h") || 1080;
-      let quality = url.searchParams.get("quality") || "default";
+      let quality = url.searchParams.get("quality") || "hd1080";
       let forceQuality = url.searchParams.get("forcequality") == "true" ? true : false;
       let speed = url.searchParams.get('speed') || 1;
       let startSeconds = url.searchParams.get("t") || 0;
@@ -45,7 +45,7 @@
       let loop = url.searchParams.get("loop") == "false" ? false : true;
       let fade = url.searchParams.get("fade") == "true" ? true : false;
       let debugMode = url.searchParams.get("debug") == "true" ? true : false;
-      let hide = url.searchParams.get("hide") == "true" ? true : false;
+      let hide = url.searchParams.get("hide") == "false" ? true : false;
       let hideWhenStopped = url.searchParams.get('hideWhenStopped') == "true" ? true : false;
       let controls = url.searchParams.get('controls') == "true" ? true : false;
 
@@ -71,7 +71,7 @@
             iv_load_policy: 3, // Hide the Video Annotations
             autohide: 1, // Hide video controls when playing
             enablejsapi: 1,
-            rel: 0, // Hide videos recommandations when stopped
+            rel: 1, // Hide videos recommandations when stopped
           },
           events: {
             onReady,
