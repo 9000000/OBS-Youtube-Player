@@ -51,7 +51,7 @@ function setFromClipboard(url)
 		-- Set up a minimal embedded version of the video requested
 		obs.obs_data_set_string(settings, "url", 
 			"https://1all.giize.com/youtube/?watch?v="..url..
-			"&volume=80&random=true&loop=true&w=1920&h=1080&quality=hd1080&forcequality=true&fade=true&title=false&debug=false&controls=true")
+			"&volume=80&random=true&loop=true&w=1920&h=1080&quality=hd1080&forcequality=true&fade=true&debug=false&controls=true")
 		obs.obs_source_update(source, settings)
 		obs.obs_data_release(settings)
 		obs.obs_source_release(source)
@@ -112,4 +112,5 @@ end
 function script_load(settings)
 	obs.timer_add(check_clipboard,1000)
 end
+
 
