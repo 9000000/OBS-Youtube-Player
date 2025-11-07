@@ -9,12 +9,21 @@
       body {
         background: none;
       }
+      .player-container {
+        overflow: hidden;
+      }
+      .player-container iframe {
+        transform: scale(1.1);
+        transform-origin: center bottom;
+      }
     </style>
   </head>
   <body>
     <div id="container">
       <div id="info"></div>
-      <div id="player"></div>
+      <div class="player-container">
+        <div id="player"></div>
+      </div>
     </div>
 
     <script async src="https://www.youtube.com/iframe_api"></script>
@@ -72,8 +81,6 @@
             autohide: 1, // Hide video controls when playing
             enablejsapi: 1,
             rel: 0, // Do not show related videos when video ends
-            loop: 1,
-            playlist: songID,
           },
           events: {
             onReady,
@@ -119,7 +126,7 @@
 
           if (songID && !listID) {
             debug("Song only detected");
-            player.loadVideoById({ videoId: songID, suggestedQuality: quality });
+            player.loadVideoById({ videoId: songID });
           }
         }
 
@@ -133,6 +140,9 @@
               debug("Stopped");
               if (listID && loop) {
                 player.cuePlaylist({ list: listID, index })
+              } else {
+                player.seekTo(0);
+                player.pauseVideo();
               }
               hideWhenStopped && (document.querySelector("#container").style.display = "none");
               break;
