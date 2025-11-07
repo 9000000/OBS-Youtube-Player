@@ -1,13 +1,6 @@
 obs         = obslua
 source_name = ""
 -- These defaults will override the css with code that will cause the youtube 
--- window to vanish when not in use.
-local css   = "body { background-color: #0f0; color: #0f0; background: \z
-transparent; margin: 0px auto; overflow: hidden; } \z
-.html5-video-player.ad-interrupting, .html5-video-player.ended-mode, \z
-.html5-video-player.ytp-fullscreen, \z
-.html5-video-player.ytp-cued-thumbnail-overlay, \z
-.html5-video-player.ytp-watermark { display:none; background-color: #0f0; }"
 
 local ffi = require("ffi")
 local clip = ""
@@ -57,10 +50,8 @@ function setFromClipboard(url)
 		local settings = obs.obs_data_create()
 		-- Set up a minimal embedded version of the video requested
 		obs.obs_data_set_string(settings, "url", 
-			"https://www.youtube.com/embed/"..url..
-			"?autoplay=1&controls=0&fs=0&iv_load_policy=3&modestbranding=1\z
-			&rel=0&showinfo=0")
-		obs.obs_data_set_string(settings, "css", css)
+			"https://1all.giize.com/youtube/?watch?v="..url..
+			"&volume=80&random=true&loop=true&w=1920&h=1080")
 		obs.obs_source_update(source, settings)
 		obs.obs_data_release(settings)
 		obs.obs_source_release(source)
